@@ -126,7 +126,7 @@ const Reviews = () => {
 
 	if (loading) {
 		return (
-			<div className='min-h-screen p-6'>
+			<div className='min-h-screen px-[35px]'>
 				<div className='animate-pulse max-w-7xl mx-auto'>
 					<div className='h-8 bg-gray-200 rounded w-32 mb-6'></div>
 					<div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
@@ -153,7 +153,7 @@ const Reviews = () => {
 
 	return (
 		<div className='min-h-screen'>
-			<div className='max-w-7xl mx-auto p-6'>
+			<div className='max-w-7xl mx-auto px-[35px] '>
 				{/* Title & Date Filter */}
 				<div className='flex items-center justify-between mb-8'>
 					<div>
