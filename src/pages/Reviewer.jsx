@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Star, ChevronLeft, ChevronRight, Calendar } from 'lucide-react'
+import avatar from '../assets/i-removebg-preview.png'
 
 const Reviews = () => {
 	const [reviews, setReviews] = useState([])
