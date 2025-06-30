@@ -1,29 +1,46 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import login1 from '../assets/image-removebg-preview(11)(1).png'
 import email1 from '../assets/pngimg.com - email_PNG49.png'
 import password1 from '../assets/png-clipart-computer-icons-lock-multi-factor-authentication-font-awesome-security-key-miscellaneous-payment-removebg-preview.png'
+import axios from 'axios'
 
 const LoginLayout = ({ login }) => {
 	const [email, setEmail] = useState('')
+	const [users, setUsers] = useState([])
 	const [password, setPassword] = useState('')
 	const [error, setError] = useState('')
 
+	useEffect(() => {
+		axios.get('https://sedap-2.onrender.com/api/admins')
+			.then(res => {
+					setUsers(res.data)
+			})
+			.catch(err => {
+				console.error('Failed to fetch admins:', err)
+			})
+	}, [])
+
 	const handleLogin = e => {
 		e.preventDefault()
-		if (email === 'Sedap' && password === 'admin') {
+
+		const admin = users.find(v => v.email === email && v.password === password)
+		if (admin) {
 			login()
+			delete admin.password
+			localStorage.setItem('user', JSON.stringify(admin))
 			setError('')
 		} else {
 			setError('Your Email or Password is Incorrect!')
 		}
+		
 	}
 
 	return (
 		<div className='w-[100vw] h-[100vh] flex items-center'>
-			<div className='w-[48%] bg-[#daf5f0] h-[100%] flex items-center justify-center'>
+			<div className='w-[48%] bg-[#daf5f0] h-full flex items-center justify-center'>
 				<img className='w-[80%]' src={login1} alt='Login visual' />
 			</div>
-			<div className='w-[52%] h-[100%] px-[70px] pt-[70px] pb-[30px] flex flex-col gap-[3px]'>
+			<div className='w-[52%] h-full px-[70px] pt-[70px] pb-[30px] flex flex-col gap-[3px]'>
 				<div>
 					<h1 className='font-[Poppins] font-[700] text-[#3f464a] text-[50px]'>
 						Sedap.
@@ -49,6 +66,7 @@ const LoginLayout = ({ login }) => {
 							<input
 								id='email'
 								type='text'
+								value={email}
 								onChange={e => setEmail(e.target.value)}
 								placeholder='Email Address'
 								className='rounded-[8px] border-[2px] border-[#d4d4d3] w-[85%] px-[20px] py-[16px] placeholder:font-[Poppins] placeholder:font-[400] text-[15px] font-[600] text-[16px] outline-none'
@@ -64,6 +82,7 @@ const LoginLayout = ({ login }) => {
 							<input
 								id='password'
 								type='password'
+								value={password}
 								onChange={e => setPassword(e.target.value)}
 								placeholder='Password'
 								className='rounded-[8px] border-[2px] border-[#d4d4d3] w-[85%] px-[20px] py-[16px] placeholder:font-[Poppins] placeholder:font-[400] text-[15px] font-[600] text-[16px] outline-none'
@@ -77,7 +96,7 @@ const LoginLayout = ({ login }) => {
 							)}
 							<button
 								type='submit'
-								className='bg-[#00b588] rounded-[10px] py-[16px] w-[30%] font-[Poppins] font-[700] text-[white] text-[18px]'
+								className='bg-[#00b588] rounded-[10px] py-[16px] w-[30%] font-[Poppins] font-[700] text-white text-[18px]'
 							>
 								Login
 							</button>
