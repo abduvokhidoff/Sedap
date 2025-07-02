@@ -16,6 +16,7 @@ import Chats from './pages/Chats'
 import Wallet from './pages/Wallet'
 import PrivateRouter from './components/PrivateRouter'
 import ProtectedLogin from './components/ProtectedLogin'
+import DeliversList from './pages/DeliversList'
 
 const App = () => {
 	const [isAuth, setIsAuth] = useState(() => {
@@ -61,6 +62,7 @@ const App = () => {
 				{ path: 'calendar', element: <Calendar /> },
 				{ path: 'chat', element: <Chats /> },
 				{ path: 'wallet', element: <Wallet /> },
+				{ path: 'delivers_list', element: <DeliversList/> },
 			],
 		},
 	])

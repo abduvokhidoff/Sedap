@@ -11,7 +11,7 @@ const Navbar = () => {
 	const user = JSON.parse(localStorage.getItem('user'))
 
 	return (
-		<div className='flex items-center justify-between fixed top-0 w-[80%] py-[28px] px-[35px] bg-[#f4f2f7] z-[20]'>
+		<div className='flex items-center justify-between fixed top-0 w-[80%] py-[28px] px-[25px] bg-[#f4f2f7] z-[20]'>
 			<div className='w-[60%] py-[10px] flex items-center bg-[#fdfdfd] rounded-[10px] px-[20px]'>
 				<input
 					className='w-[100%] outline-none'

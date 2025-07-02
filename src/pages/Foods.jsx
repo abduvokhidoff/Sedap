@@ -71,7 +71,7 @@ const Foods = () => {
 	)
 
 	return (
-		<div className='px-[35px] bg-gray-100 pb-[60px] w-full relative '>
+		<div className='px-[25px] bg-gray-100 pb-[60px] w-full relative '>
 			{/* Modal */}
 			{isModalOpen && (
 				<div className='fixed inset-0 bg-[#00000080] backdrop-blur-md bg-opacity-50 flex items-center justify-center z-50'>

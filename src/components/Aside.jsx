@@ -27,6 +27,7 @@ import supportActive from '../assets/image-removebg-preview(32).png'
 import profileActive from '../assets/image-removebg-preview(34).png'
 import logoutActive from '../assets/image-removebg-preview(36).png'
 import chef from '../assets/image-removebg-preview(38).png'
+import { LuCarTaxiFront } from 'react-icons/lu'
 
 const Aside = () => {
 	const location = useLocation()
@@ -116,6 +117,13 @@ const Aside = () => {
 			icon: logout,
 			activeIcon: logoutActive,
 		},
+		{
+			id: 12,
+			path: '/delivers_list',
+			label: 'Delivers List',
+			icon: <LuCarTaxiFront size={20} />, // Render as component with size
+			activeIcon: <LuCarTaxiFront size={20} />, // Render as component with size
+		},
 	]
 
 	return (
@@ -157,11 +165,17 @@ const Aside = () => {
 													: 'bg-transparent text-[#574f60]'
 											}`}
 										>
-											<img
-												src={isActive ? item.activeIcon : item.icon}
-												alt={item.label}
-												className='w-[20px] h-[20px]'
-											/>
+											{typeof item.icon === 'string' ? (
+												<img
+													src={isActive ? item.activeIcon : item.icon}
+													alt={item.label}
+													className='w-[20px] h-[20px]'
+												/>
+											) : (
+												<span className='text-[20px]'>
+													{isActive ? item.activeIcon : item.icon}
+												</span>
+											)}
 											<p className='font-[Roboto] font-[600] text-[14px]'>
 												{item.label}
 											</p>
